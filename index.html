@@ -1,456 +1,516 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Open GI Product Lab</title>
-  <link rel="stylesheet" href="https://use.typekit.net/aio4aoz.css">
+    <link rel="stylesheet" href="https://use.typekit.net/aio4aoz.css">
   <style>
-    :root {
-      --bh-colour-neutral-0: #ffffff;
-      --bh-colour-neutral-50: #f7f8fa;
-      --bh-colour-neutral-100: #edf0f4;
-      --bh-colour-neutral-200: #d9dee7;
-      --bh-colour-neutral-600: #5b6678;
-      --bh-colour-neutral-800: #283241;
-      --bh-colour-neutral-900: #121926;
-      --bh-colour-primary: #243cff;
-      --bh-colour-primary-dark: #1729b7;
-      --bh-colour-info-bg: #eef4ff;
-      --bh-colour-info-text: #16346b;
-      --bh-colour-warning-bg: #fff5dd;
-      --bh-colour-warning-text: #6b4900;
-      --bh-colour-success-bg: #e9f8ef;
-      --bh-colour-success-text: #17663a;
-      --bh-radius-sm: 0.375rem;
-      --bh-radius-md: 0.75rem;
-      --bh-radius-lg: 1rem;
-      --bh-space-1: 0.25rem;
-      --bh-space-2: 0.5rem;
-      --bh-space-3: 0.75rem;
-      --bh-space-4: 1rem;
-      --bh-space-5: 1.25rem;
-      --bh-space-6: 1.5rem;
-      --bh-space-8: 2rem;
-      --bh-space-10: 2.5rem;
-      --bh-space-12: 3rem;
-      --bh-font: "proxima-soft", proxima-soft, Arial, sans-serif;
-    }
+:root {
+  --bh-colour-neutral-0: #ffffff;
+  --bh-colour-neutral-50: #f7f8fa;
+  --bh-colour-neutral-100: #edf0f4;
+  --bh-colour-neutral-200: #d9dee7;
+  --bh-colour-neutral-600: #5b6678;
+  --bh-colour-neutral-800: #283241;
+  --bh-colour-neutral-900: #121926;
+  --bh-colour-primary: #243cff;
+  --bh-colour-primary-dark: #1729b7;
+  --bh-colour-info-bg: #eef4ff;
+  --bh-colour-info-text: #16346b;
+  --bh-colour-warning-bg: #fff5dd;
+  --bh-colour-warning-text: #6b4900;
+  --bh-colour-success-bg: #e9f8ef;
+  --bh-colour-success-text: #17663a;
+  --bh-radius-sm: 0.375rem;
+  --bh-radius-md: 0.75rem;
+  --bh-radius-lg: 1rem;
+  --bh-space-1: 0.25rem;
+  --bh-space-2: 0.5rem;
+  --bh-space-3: 0.75rem;
+  --bh-space-4: 1rem;
+  --bh-space-5: 1.25rem;
+  --bh-space-6: 1.5rem;
+  --bh-space-8: 2rem;
+  --bh-space-10: 2.5rem;
+  --bh-space-12: 3rem;
+  --bh-font: "proxima-soft", proxima-soft, Arial, sans-serif;
+}
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-    body {
-      margin: 0;
-      font-family: var(--bh-font);
-      color: var(--bh-colour-neutral-900);
-      background: var(--bh-colour-neutral-50);
-      line-height: 1.5;
-    }
+body {
+  margin: 0;
+  font-family: var(--bh-font);
+  color: var(--bh-colour-neutral-900);
+  background: var(--bh-colour-neutral-50);
+  line-height: 1.5;
+}
 
-    body.modal-open { overflow: hidden; }
-    a { color: var(--bh-colour-primary); }
+body.modal-open { overflow: hidden; }
+a { color: var(--bh-colour-primary); }
 
-    .app-shell {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      min-height: 100vh;
-    }
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
 
-    .side-nav {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow: auto;
-      background: var(--bh-colour-neutral-0);
-      border-right: 1px solid var(--bh-colour-neutral-200);
-      padding: var(--bh-space-6);
-    }
+.side-nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: auto;
+  background: var(--bh-colour-neutral-0);
+  border-right: 1px solid var(--bh-colour-neutral-200);
+  padding: var(--bh-space-6);
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: var(--bh-space-3);
-      margin-bottom: var(--bh-space-8);
-    }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--bh-space-3);
+  margin-bottom: var(--bh-space-8);
+}
 
-    .brand-mark {
-      display: inline-grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: var(--bh-radius-md);
-      background: var(--bh-colour-primary);
-      color: white;
-      font-weight: 800;
-    }
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--bh-radius-md);
+  background: var(--bh-colour-primary);
+  color: white;
+  font-weight: 800;
+}
 
-    .brand-title {
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      font-size: 1.1rem;
-    }
+.brand-title {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: 1.1rem;
+}
 
-    .brand-subtitle {
-      display: block;
-      color: var(--bh-colour-neutral-600);
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0;
-    }
+.brand-subtitle {
+  display: block;
+  color: var(--bh-colour-neutral-600);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
 
-    .nav-label {
-      display: block;
-      color: var(--bh-colour-neutral-600);
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin: var(--bh-space-6) 0 var(--bh-space-2);
-    }
+.nav-label {
+  display: block;
+  color: var(--bh-colour-neutral-600);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: var(--bh-space-6) 0 var(--bh-space-2);
+}
 
-    .nav-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: var(--bh-space-1);
-    }
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--bh-space-1);
+}
 
-    .nav-list a {
-      display: block;
-      padding: var(--bh-space-2) var(--bh-space-3);
-      border-radius: var(--bh-radius-sm);
-      color: var(--bh-colour-neutral-800);
-      text-decoration: none;
-      font-weight: 700;
-    }
+.nav-list a {
+  display: block;
+  padding: var(--bh-space-2) var(--bh-space-3);
+  border-radius: var(--bh-radius-sm);
+  color: var(--bh-colour-neutral-800);
+  text-decoration: none;
+  font-weight: 700;
+}
 
-    .nav-list a:hover,
-    .nav-list a:focus {
-      background: var(--bh-colour-neutral-100);
-      outline: none;
-    }
+.nav-list a:hover,
+.nav-list a:focus {
+  background: var(--bh-colour-neutral-100);
+  outline: none;
+}
 
-    .content { padding: var(--bh-space-8); }
+.content { padding: var(--bh-space-8); }
 
-    .page-header {
-      background: var(--bh-colour-neutral-0);
-      border: 1px solid var(--bh-colour-neutral-200);
-      border-radius: var(--bh-radius-lg);
-      padding: clamp(1.5rem, 4vw, 3rem);
-      margin-bottom: var(--bh-space-8);
-    }
+.page-header {
+  background: var(--bh-colour-neutral-0);
+  border: 1px solid var(--bh-colour-neutral-200);
+  border-radius: var(--bh-radius-lg);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: var(--bh-space-8);
+}
 
-    .eyebrow {
-      color: var(--bh-colour-primary);
-      font-weight: 800;
-      font-size: 0.9rem;
-      margin: 0 0 var(--bh-space-3);
-    }
+.eyebrow {
+  color: var(--bh-colour-primary);
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin: 0 0 var(--bh-space-3);
+}
 
-    h1 {
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
-      margin: 0 0 var(--bh-space-5);
-      max-width: 880px;
-    }
+h1 {
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  margin: 0 0 var(--bh-space-5);
+  max-width: 880px;
+}
 
-    .lead {
-      color: var(--bh-colour-neutral-600);
-      font-size: 1.1rem;
-      max-width: 840px;
-      margin: 0;
-    }
+.lead {
+  color: var(--bh-colour-neutral-600);
+  font-size: 1.1rem;
+  max-width: 840px;
+  margin: 0;
+}
 
-    .alert {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: var(--bh-space-4);
-      background: var(--bh-colour-info-bg);
-      color: var(--bh-colour-info-text);
-      border: 1px solid #c8dafe;
-      border-radius: var(--bh-radius-md);
-      padding: var(--bh-space-5);
-      margin-bottom: var(--bh-space-10);
-    }
+.alert {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--bh-space-4);
+  background: var(--bh-colour-info-bg);
+  color: var(--bh-colour-info-text);
+  border: 1px solid #c8dafe;
+  border-radius: var(--bh-radius-md);
+  padding: var(--bh-space-5);
+  margin-bottom: var(--bh-space-10);
+}
 
-    .alert-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: var(--bh-colour-primary);
-      color: white;
-      display: inline-grid;
-      place-items: center;
-      font-weight: 800;
-    }
+.alert-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--bh-colour-primary);
+  color: white;
+  display: inline-grid;
+  place-items: center;
+  font-weight: 800;
+}
 
-    .alert h2 { margin: 0 0 var(--bh-space-1); font-size: 1rem; }
-    .alert p { margin: 0; }
+.alert h2 {
+  margin: 0 0 var(--bh-space-1);
+  font-size: 1rem;
+}
 
-    .section-block {
-      scroll-margin-top: var(--bh-space-6);
-      margin-bottom: var(--bh-space-12);
-    }
+.alert p { margin: 0; }
 
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: var(--bh-space-4);
-      margin-bottom: var(--bh-space-6);
-      padding-bottom: var(--bh-space-3);
-      border-bottom: 1px solid var(--bh-colour-neutral-200);
-    }
+.section-block {
+  scroll-margin-top: var(--bh-space-6);
+  margin-bottom: var(--bh-space-12);
+}
 
-    .section-heading h2 {
-      font-size: 1.6rem;
-      margin: 0;
-      letter-spacing: -0.03em;
-    }
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--bh-space-4);
+  margin-bottom: var(--bh-space-6);
+  padding-bottom: var(--bh-space-3);
+  border-bottom: 1px solid var(--bh-colour-neutral-200);
+}
 
-    .section-heading p {
-      color: var(--bh-colour-neutral-600);
-      margin: var(--bh-space-1) 0 0;
-    }
+.section-heading h2 {
+  font-size: 1.6rem;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
 
-    .subsection-heading {
-      margin: var(--bh-space-10) 0 var(--bh-space-5);
-      color: var(--bh-colour-neutral-800);
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
-    }
+.section-heading p {
+  color: var(--bh-colour-neutral-600);
+  margin: var(--bh-space-1) 0 0;
+}
 
-    .subsection-heading:first-of-type { margin-top: 0; }
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--bh-space-8);
+}
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--bh-space-8);
-    }
+.card {
+  background: var(--bh-colour-neutral-0);
+  border: 1px solid var(--bh-colour-neutral-200);
+  border-radius: var(--bh-radius-md);
+  padding: var(--bh-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bh-space-4);
+  min-height: 300px;
+}
 
-    .card {
-      background: var(--bh-colour-neutral-0);
-      border: 1px solid var(--bh-colour-neutral-200);
-      border-radius: var(--bh-radius-md);
-      padding: var(--bh-space-5);
-      display: flex;
-      flex-direction: column;
-      gap: var(--bh-space-4);
-      min-height: 300px;
-    }
+.card.suite-card {
+  grid-column: span 3;
+}
 
-    .card:hover { border-color: var(--bh-colour-primary); }
+.card:hover { border-color: var(--bh-colour-primary); }
 
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      gap: var(--bh-space-3);
-      align-items: flex-start;
-    }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--bh-space-3);
+  align-items: flex-start;
+}
 
-    .icon-block {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--bh-radius-md);
-      background: var(--bh-colour-neutral-100);
-      display: grid;
-      place-items: center;
-      color: var(--bh-colour-primary);
-      font-weight: 800;
-      flex: 0 0 auto;
-    }
+.icon-block {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--bh-radius-md);
+  background: var(--bh-colour-neutral-100);
+  display: grid;
+  place-items: center;
+  color: var(--bh-colour-primary);
+  font-weight: 800;
+  flex: 0 0 auto;
+}
 
-    .card h3 {
-      margin: 0;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
-    }
+.card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
 
-    .card p { margin: 0; color: var(--bh-colour-neutral-600); }
+.card p {
+  margin: 0;
+  color: var(--bh-colour-neutral-600);
+}
 
-    .tag {
-      display: inline-flex;
-      width: fit-content;
-      align-items: center;
-      border-radius: 999px;
-      padding: 0.28rem 0.65rem;
-      font-size: 0.78rem;
-      font-weight: 800;
-      background: var(--bh-colour-success-bg);
-      color: var(--bh-colour-success-text);
-      white-space: nowrap;
-    }
+.tag {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.28rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: var(--bh-colour-success-bg);
+  color: var(--bh-colour-success-text);
+  white-space: nowrap;
+}
 
-    .tag.warning {
-      background: var(--bh-colour-warning-bg);
-      color: var(--bh-colour-warning-text);
-    }
+.tag.warning {
+  background: var(--bh-colour-warning-bg);
+  color: var(--bh-colour-warning-text);
+}
 
-    .emphasis-tile {
-      background: var(--bh-colour-neutral-50);
-      border: 1px solid var(--bh-colour-neutral-200);
-      border-radius: var(--bh-radius-sm);
-      padding: var(--bh-space-4);
-      display: grid;
-      gap: var(--bh-space-2);
-      font-size: 0.92rem;
-      margin-top: auto;
-    }
+.emphasis-tile {
+  background: var(--bh-colour-neutral-50);
+  border: 1px solid var(--bh-colour-neutral-200);
+  border-radius: var(--bh-radius-sm);
+  padding: var(--bh-space-4);
+  display: grid;
+  gap: var(--bh-space-2);
+  font-size: 0.92rem;
+  margin-top: auto;
+}
 
-    .kv {
-      display: grid;
-      grid-template-columns: 86px 1fr;
-      gap: var(--bh-space-2);
-    }
+.kv {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: var(--bh-space-2);
+}
 
-    .kv dt { color: var(--bh-colour-neutral-600); font-weight: 800; }
-    .kv dd { margin: 0; color: var(--bh-colour-neutral-800); }
+.kv dt {
+  color: var(--bh-colour-neutral-600);
+  font-weight: 800;
+}
 
-    .actions {
-      display: flex;
-      gap: var(--bh-space-3);
-      flex-wrap: wrap;
-    }
+.kv dd {
+  margin: 0;
+  color: var(--bh-colour-neutral-800);
+}
 
-    .btn {
-      appearance: none;
-      border: 1px solid var(--bh-colour-primary);
-      border-radius: var(--bh-radius-sm);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 0.55rem 0.95rem;
-      font-weight: 800;
-      text-decoration: none;
-      cursor: pointer;
-      font: inherit;
-    }
+.suite-apps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--bh-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-    .btn-primary { background: var(--bh-colour-primary); color: #fff; }
-    .btn-primary:hover { background: var(--bh-colour-primary-dark); }
-    .btn-secondary { background: transparent; color: var(--bh-colour-primary); }
+.suite-app {
+  border: 1px solid var(--bh-colour-neutral-200);
+  border-radius: var(--bh-radius-sm);
+  background: var(--bh-colour-neutral-50);
+  padding: var(--bh-space-4);
+}
 
-    .footer-note {
-      margin-top: var(--bh-space-10);
-      padding-top: var(--bh-space-6);
-      border-top: 1px solid var(--bh-colour-neutral-200);
-      color: var(--bh-colour-neutral-600);
-      font-size: 0.92rem;
-    }
+.suite-app strong {
+  display: block;
+  margin-bottom: var(--bh-space-1);
+  color: var(--bh-colour-neutral-900);
+}
 
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(18, 25, 38, 0.62);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: var(--bh-space-6);
-      z-index: 1000;
-    }
+.suite-app span {
+  display: block;
+  color: var(--bh-colour-neutral-600);
+  font-size: 0.9rem;
+}
 
-    .modal-backdrop.is-open { display: flex; }
+.suite-note {
+  background: var(--bh-colour-info-bg);
+  color: var(--bh-colour-info-text);
+  border: 1px solid #c8dafe;
+  border-radius: var(--bh-radius-sm);
+  padding: var(--bh-space-4);
+  font-weight: 700;
+}
 
-    .modal {
-      width: min(720px, 100%);
-      background: var(--bh-colour-neutral-0);
-      border-radius: var(--bh-radius-lg);
-      border: 1px solid var(--bh-colour-neutral-200);
-      overflow: hidden;
-    }
+.actions {
+  display: flex;
+  gap: var(--bh-space-3);
+  flex-wrap: wrap;
+}
 
-    .modal-header,
-    .modal-footer {
-      padding: var(--bh-space-5);
-      border-bottom: 1px solid var(--bh-colour-neutral-200);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--bh-space-4);
-    }
+.btn {
+  appearance: none;
+  border: 1px solid var(--bh-colour-primary);
+  border-radius: var(--bh-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.55rem 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+}
 
-    .modal-footer {
-      border-top: 1px solid var(--bh-colour-neutral-200);
-      border-bottom: 0;
-      justify-content: flex-end;
-    }
+.btn-primary {
+  background: var(--bh-colour-primary);
+  color: #fff;
+}
 
-    .modal-title {
-      margin: 0;
-      font-size: 1.35rem;
-      letter-spacing: -0.03em;
-    }
+.btn-primary:hover { background: var(--bh-colour-primary-dark); }
 
-    .modal-body {
-      padding: var(--bh-space-5);
-      display: grid;
-      gap: var(--bh-space-3);
-    }
+.btn-secondary {
+  background: transparent;
+  color: var(--bh-colour-primary);
+}
 
-    .modal-body label {
-      font-weight: 800;
-      color: var(--bh-colour-neutral-800);
-    }
+.footer-note {
+  margin-top: var(--bh-space-10);
+  padding-top: var(--bh-space-6);
+  border-top: 1px solid var(--bh-colour-neutral-200);
+  color: var(--bh-colour-neutral-600);
+  font-size: 0.92rem;
+}
 
-    .notes-input {
-      width: 100%;
-      min-height: 240px;
-      resize: vertical;
-      padding: var(--bh-space-4);
-      border: 1px solid var(--bh-colour-neutral-200);
-      border-radius: var(--bh-radius-sm);
-      font: inherit;
-      line-height: 1.5;
-    }
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 25, 38, 0.62);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--bh-space-6);
+  z-index: 1000;
+}
 
-    .notes-input:focus {
-      outline: 3px solid rgba(36, 60, 255, 0.16);
-      border-color: var(--bh-colour-primary);
-    }
+.modal-backdrop.is-open { display: flex; }
 
-    .close-button {
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--bh-colour-neutral-200);
-      border-radius: var(--bh-radius-sm);
-      background: var(--bh-colour-neutral-0);
-      font-size: 1.35rem;
-      cursor: pointer;
-    }
+.modal {
+  width: min(720px, 100%);
+  background: var(--bh-colour-neutral-0);
+  border-radius: var(--bh-radius-lg);
+  border: 1px solid var(--bh-colour-neutral-200);
+  overflow: hidden;
+}
 
-    .saved-indicator {
-      color: var(--bh-colour-success-text);
-      font-weight: 800;
-      font-size: 0.9rem;
-      margin-right: auto;
-      display: none;
-    }
+.modal-header,
+.modal-footer {
+  padding: var(--bh-space-5);
+  border-bottom: 1px solid var(--bh-colour-neutral-200);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--bh-space-4);
+}
 
-    .saved-indicator.is-visible { display: inline; }
+.modal-footer {
+  border-top: 1px solid var(--bh-colour-neutral-200);
+  border-bottom: 0;
+  justify-content: flex-end;
+}
 
-    @media (max-width: 1100px) {
-      .app-shell { grid-template-columns: 1fr; }
-      .side-nav {
-        position: static;
-        height: auto;
-        border-right: 0;
-        border-bottom: 1px solid var(--bh-colour-neutral-200);
-      }
-      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
+.modal-title {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
 
-    @media (max-width: 700px) {
-      .content { padding: var(--bh-space-4); }
-      .product-grid { grid-template-columns: 1fr; }
-      .section-heading { align-items: start; flex-direction: column; }
-      .modal-backdrop { padding: var(--bh-space-3); }
-    }
-  </style>
+.modal-body {
+  padding: var(--bh-space-5);
+  display: grid;
+  gap: var(--bh-space-3);
+}
+
+.modal-body label {
+  font-weight: 800;
+  color: var(--bh-colour-neutral-800);
+}
+
+.notes-input {
+  width: 100%;
+  min-height: 240px;
+  resize: vertical;
+  padding: var(--bh-space-4);
+  border: 1px solid var(--bh-colour-neutral-200);
+  border-radius: var(--bh-radius-sm);
+  font: inherit;
+  line-height: 1.5;
+}
+
+.notes-input:focus {
+  outline: 3px solid rgba(36, 60, 255, 0.16);
+  border-color: var(--bh-colour-primary);
+}
+
+.close-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--bh-colour-neutral-200);
+  border-radius: var(--bh-radius-sm);
+  background: var(--bh-colour-neutral-0);
+  font-size: 1.35rem;
+  cursor: pointer;
+}
+
+.saved-indicator {
+  color: var(--bh-colour-success-text);
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-right: auto;
+  display: none;
+}
+
+.saved-indicator.is-visible { display: inline; }
+
+@media (max-width: 1200px) {
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card.suite-card { grid-column: span 2; }
+  .suite-apps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1100px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .side-nav {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--bh-colour-neutral-200);
+  }
+}
+
+@media (max-width: 700px) {
+  .content { padding: var(--bh-space-4); }
+  .product-grid { grid-template-columns: 1fr; }
+  .card.suite-card { grid-column: span 1; }
+  .suite-apps { grid-template-columns: 1fr; }
+  .section-heading { align-items: start; flex-direction: column; }
+  .modal-backdrop { padding: var(--bh-space-3); }
+}
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -501,13 +561,225 @@
             <p>Core PAS and supporting products/components.</p>
           </div>
         </div>
+
         <div class="product-grid">
-          <article class="card" data-product-id="core" data-product-name="Core"><div class="card-header"><div><span class="tag">Access required</span><h3>Core</h3></div><div class="icon-block">C</div></div><p>Main Open GI policy administration platform for quote, policy, client, risk and back-office insurance workflows.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product / Engineering TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="integration-products" data-product-name="Integration Products"><div class="card-header"><div><span class="tag">Access required</span><h3>Integration Products</h3></div><div class="icon-block">IP</div></div><p>Supporting integration tools such as Open Word, Open Attach, Open Print Manager and related desktop/service utilities.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product / Engineering TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="active-quote" data-product-name="Active Quote"><div class="card-header"><div><span class="tag">Access required</span><h3>Active Quote</h3></div><div class="icon-block">AQ</div></div><p>Quote-related solution used to support quotation activity and associated insurer/product workflows.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="add-on-marketplace" data-product-name="Add-On Marketplace"><div class="card-header"><div><span class="tag">Access required</span><h3>Add-On Marketplace</h3></div><div class="icon-block">AO</div></div><p>Marketplace-style capability for surfacing and managing add-on products and optional extras.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="sme" data-product-name="SME"><div class="card-header"><div><span class="tag">Access required</span><h3>SME</h3></div><div class="icon-block">S</div></div><p>SME-focused platform/component supporting commercial small-to-medium enterprise insurance journeys.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="document-portal" data-product-name="Document Portal"><div class="card-header"><div><span class="tag">Access required</span><h3>Document Portal</h3></div><div class="icon-block">DP</div></div><p>Portal for accessing, sharing or managing generated customer/policy documentation.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+
+          <article class="card" data-product-id="core" data-product-name="Core">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Access required</span>
+                <h3>Core</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">C</div>
+            </div>
+
+            <p>Main Open GI policy administration platform for quote, policy, client, risk and back-office insurance workflows.</p>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>Product / Engineering TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="integration-products" data-product-name="Integration Products">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Access required</span>
+                <h3>Integration Products</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">IP</div>
+            </div>
+
+            <p>Supporting integration tools such as Open Word, Open Attach, Open Print Manager and related desktop/service utilities.</p>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>Product / Engineering TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="active-quote" data-product-name="Active Quote">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Access required</span>
+                <h3>Active Quote</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">AQ</div>
+            </div>
+
+            <p>Quote-related solution used to support quotation activity and associated insurer/product workflows.</p>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>Product TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="add-on-marketplace" data-product-name="Add-On Marketplace">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Access required</span>
+                <h3>Add-On Marketplace</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">AO</div>
+            </div>
+
+            <p>Marketplace-style capability for surfacing and managing add-on products and optional extras.</p>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>Product TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="sme" data-product-name="SME">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Access required</span>
+                <h3>SME</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">S</div>
+            </div>
+
+            <p>SME-focused platform/component supporting commercial small-to-medium enterprise insurance journeys.</p>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>Product TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="document-portal" data-product-name="Document Portal">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Access required</span>
+                <h3>Document Portal</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">DP</div>
+            </div>
+
+            <p>Portal for accessing, sharing or managing generated customer/policy documentation.</p>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>Product TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
         </div>
       </section>
 
@@ -519,23 +791,200 @@
           </div>
         </div>
 
-        <h3 class="subsection-heading">Mobius applications</h3>
         <div class="product-grid">
-          <article class="card" data-product-id="mobius-ui" data-product-name="Mobius UI"><div class="card-header"><div><span class="tag">Access required</span><h3>Mobius UI</h3></div><div class="icon-block">MU</div></div><p>Modern Mobius user interface for policy and operational workflows.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">https://ui.ogi-mobius.com/</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Mobius Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="configuration-hub" data-product-name="Configuration Hub"><div class="card-header"><div><span class="tag">Access required</span><h3>Configuration Hub</h3></div><div class="icon-block">CH</div></div><p>Central configuration area for managing product/platform settings and configuration assets.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">https://configurationhub.ogi-mobius.com/</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product / Engineering TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="dynamic-pricing-tool" data-product-name="Dynamic Pricing Tool"><div class="card-header"><div><span class="tag">Access required</span><h3>Dynamic Pricing Tool</h3></div><div class="icon-block">DP</div></div><p>Tooling to support dynamic pricing configuration, testing and pricing-related changes.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">https://dpt.ui.ogi-mobius.com/</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-        </div>
 
-        <h3 class="subsection-heading">RD apps</h3>
-        <div class="product-grid">
-          <article class="card" data-product-id="accounts-suite" data-product-name="Accounts Suite"><div class="card-header"><div><span class="tag">Access required</span><h3>Accounts Suite</h3></div><div class="icon-block">AS</div></div><p>RD application suite supporting accounts-related workflows and operational finance activity.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="mcas" data-product-name="MCAS"><div class="card-header"><div><span class="tag warning">Confirm status</span><h3>MCAS</h3></div><div class="icon-block">M</div></div><p>Legacy/older RD application. Product confirmation needed as this may be planned for deprecation.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="obfuscation-manager" data-product-name="Obfuscation Manager"><div class="card-header"><div><span class="tag">Access required</span><h3>Obfuscation Manager</h3></div><div class="icon-block">OM</div></div><p>Tool for managing data obfuscation or masking processes.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Engineering TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="relationship-manager" data-product-name="Relationship Manager"><div class="card-header"><div><span class="tag">Access required</span><h3>Relationship Manager</h3></div><div class="icon-block">RM</div></div><p>Application for managing relationships or links between entities/data records.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="report-scheduler" data-product-name="Report Scheduler"><div class="card-header"><div><span class="tag">Access required</span><h3>Report Scheduler</h3></div><div class="icon-block">RS</div></div><p>Tool for scheduling and managing reports.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="screen-designer" data-product-name="Screen Designer"><div class="card-header"><div><span class="tag warning">Confirm status</span><h3>Screen Designer</h3></div><div class="icon-block">SD</div></div><p>Legacy/design tool expected to be replaced by LOB Tool when available.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="tools-suite" data-product-name="Tools Suite"><div class="card-header"><div><span class="tag warning">Confirm status</span><h3>Tools Suite</h3></div><div class="icon-block">TS</div></div><p>Collection of RD tools; some capability may now have moved into Configuration Hub.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
-          <article class="card" data-product-id="document-manager-word-add-in" data-product-name="Document Manager - Word Add In"><div class="card-header"><div><span class="tag">Access required</span><h3>Document Manager - Word Add In</h3></div><div class="icon-block">DM</div></div><p>Word add-in for document management or document production workflows.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="mobius-ui" data-product-name="Mobius UI">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Access required</span>
+                <h3>Mobius UI</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">MU</div>
+            </div>
+
+            <p>Modern Mobius user interface for policy and operational workflows.</p>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>Mobius Product TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="configuration-hub" data-product-name="Configuration Hub">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Access required</span>
+                <h3>Configuration Hub</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">CH</div>
+            </div>
+
+            <p>Central configuration area for managing product/platform settings and configuration assets.</p>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>Product / Engineering TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
+          <article class="card" data-product-id="dynamic-pricing-tool" data-product-name="Dynamic Pricing Tool">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Access required</span>
+                <h3>Dynamic Pricing Tool</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">DP</div>
+            </div>
+
+            <p>Tooling to support dynamic pricing configuration, testing and pricing-related changes.</p>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>Product TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
+          <article class="card suite-card" data-product-id="rd-apps" data-product-name="RD Apps">
+            <div class="card-header">
+              <div>
+                <span class="tag ">Single login</span>
+                <h3>RD Apps</h3>
+              </div>
+              <div class="icon-block" aria-hidden="true">RA</div>
+            </div>
+
+            <p>A single RD Apps login provides access to the suite of RD applications under the Mobius umbrella.</p>
+
+            <div class="suite-note">
+              Users log in once to RD Apps, then access the individual applications available within the suite.
+            </div>
+
+            <ul class="suite-apps">
+
+              <li class="suite-app">
+                <strong>Accounts Suite</strong>
+                <span>Accounts-related workflows and operational finance activity.</span>
+              </li>
+
+              <li class="suite-app">
+                <strong>MCAS</strong>
+                <span>Legacy/older RD application. Product confirmation needed as this may be planned for deprecation.</span>
+              </li>
+
+              <li class="suite-app">
+                <strong>Obfuscation Manager</strong>
+                <span>Data obfuscation or masking processes.</span>
+              </li>
+
+              <li class="suite-app">
+                <strong>Relationship Manager</strong>
+                <span>Relationship and entity-link management.</span>
+              </li>
+
+              <li class="suite-app">
+                <strong>Report Scheduler</strong>
+                <span>Scheduling and managing reports.</span>
+              </li>
+
+              <li class="suite-app">
+                <strong>Screen Designer</strong>
+                <span>Legacy/design tool expected to be replaced by LOB Tool when available.</span>
+              </li>
+
+              <li class="suite-app">
+                <strong>Tools Suite</strong>
+                <span>Collection of RD tools; some capability may now have moved into Configuration Hub.</span>
+              </li>
+
+              <li class="suite-app">
+                <strong>Document Manager - Word Add In</strong>
+                <span>Word add-in for document management or document production workflows.</span>
+              </li>
+
+            </ul>
+
+            <dl class="emphasis-tile">
+              <div class="kv">
+                <dt>Demo URL</dt>
+                <dd><a href="#">Add link</a></dd>
+              </div>
+              <div class="kv">
+                <dt>Username</dt>
+                <dd>demo.user</dd>
+              </div>
+              <div class="kv">
+                <dt>Password</dt>
+                <dd>Confirm with owner</dd>
+              </div>
+              <div class="kv">
+                <dt>Owner</dt>
+                <dd>RD / Product TBC</dd>
+              </div>
+            </dl>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#">Open demo</a>
+              <button class="btn btn-secondary notes-button" type="button">Add notes</button>
+            </div>
+          </article>
+
         </div>
       </section>
 
@@ -551,10 +1000,12 @@
         <h2 class="modal-title" id="notesModalTitle">Add notes</h2>
         <button class="close-button" type="button" id="closeModal" aria-label="Close notes modal">×</button>
       </div>
+
       <div class="modal-body">
         <label for="notesText">Notes</label>
         <textarea id="notesText" class="notes-input" placeholder="Add useful notes, access guidance, test data, limitations, owner comments, etc."></textarea>
       </div>
+
       <div class="modal-footer">
         <span id="savedIndicator" class="saved-indicator">Saved</span>
         <button class="btn btn-secondary" type="button" id="cancelNotes">Cancel</button>
@@ -571,6 +1022,7 @@
     const cancelNotesButton = document.getElementById('cancelNotes');
     const saveNotesButton = document.getElementById('saveNotes');
     const savedIndicator = document.getElementById('savedIndicator');
+
     let activeProductId = null;
     let lastFocusedElement = null;
 
@@ -581,9 +1033,12 @@
     function openNotesModal(card, trigger) {
       activeProductId = card.dataset.productId;
       lastFocusedElement = trigger;
-      modalTitle.textContent = `Notes for ${card.dataset.productName}`;
+      const productName = card.dataset.productName;
+
+      modalTitle.textContent = `Notes for ${productName}`;
       notesText.value = localStorage.getItem(storageKey(activeProductId)) || '';
       savedIndicator.classList.remove('is-visible');
+
       modal.classList.add('is-open');
       document.body.classList.add('modal-open');
       notesText.focus();
@@ -593,18 +1048,28 @@
       modal.classList.remove('is-open');
       document.body.classList.remove('modal-open');
       activeProductId = null;
-      if (lastFocusedElement) lastFocusedElement.focus();
+
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
     }
 
     function saveNotes() {
       if (!activeProductId) return;
+
       localStorage.setItem(storageKey(activeProductId), notesText.value);
       savedIndicator.classList.add('is-visible');
-      window.setTimeout(() => savedIndicator.classList.remove('is-visible'), 1600);
+
+      window.setTimeout(() => {
+        savedIndicator.classList.remove('is-visible');
+      }, 1600);
     }
 
     document.querySelectorAll('.notes-button').forEach(button => {
-      button.addEventListener('click', () => openNotesModal(button.closest('.card'), button));
+      button.addEventListener('click', () => {
+        const card = button.closest('.card');
+        openNotesModal(card, button);
+      });
     });
 
     closeModalButton.addEventListener('click', closeNotesModal);
@@ -612,12 +1077,19 @@
     saveNotesButton.addEventListener('click', saveNotes);
 
     modal.addEventListener('click', event => {
-      if (event.target === modal) closeNotesModal();
+      if (event.target === modal) {
+        closeNotesModal();
+      }
     });
 
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeNotesModal();
-      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter' && modal.classList.contains('is-open')) saveNotes();
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeNotesModal();
+      }
+
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter' && modal.classList.contains('is-open')) {
+        saveNotes();
+      }
     });
   </script>
 </body>
