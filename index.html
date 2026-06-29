@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,11 +34,11 @@
       --bh-space-6: 1.5rem;
       --bh-space-8: 2rem;
       --bh-space-10: 2.5rem;
+      --bh-space-12: 3rem;
       --bh-font: "proxima-soft", proxima-soft, Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -48,6 +49,7 @@
       line-height: 1.5;
     }
 
+    body.modal-open { overflow: hidden; }
     a { color: var(--bh-colour-primary); }
 
     .app-shell {
@@ -131,16 +133,14 @@
       outline: none;
     }
 
-    .content {
-      padding: var(--bh-space-8);
-    }
+    .content { padding: var(--bh-space-8); }
 
     .page-header {
       background: var(--bh-colour-neutral-0);
       border: 1px solid var(--bh-colour-neutral-200);
       border-radius: var(--bh-radius-lg);
       padding: clamp(1.5rem, 4vw, 3rem);
-      margin-bottom: var(--bh-space-6);
+      margin-bottom: var(--bh-space-8);
     }
 
     .eyebrow {
@@ -165,33 +165,6 @@
       margin: 0;
     }
 
-    .summary-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: var(--bh-space-4);
-      margin: var(--bh-space-6) 0;
-    }
-
-    .summary-card {
-      background: var(--bh-colour-neutral-0);
-      border: 1px solid var(--bh-colour-neutral-200);
-      border-radius: var(--bh-radius-md);
-      padding: var(--bh-space-5);
-    }
-
-    .summary-card strong {
-      display: block;
-      font-size: 1.8rem;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      margin-bottom: var(--bh-space-2);
-    }
-
-    .summary-card span {
-      color: var(--bh-colour-neutral-600);
-      font-weight: 700;
-    }
-
     .alert {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -201,7 +174,7 @@
       border: 1px solid #c8dafe;
       border-radius: var(--bh-radius-md);
       padding: var(--bh-space-5);
-      margin-bottom: var(--bh-space-8);
+      margin-bottom: var(--bh-space-10);
     }
 
     .alert-icon {
@@ -215,40 +188,12 @@
       font-weight: 800;
     }
 
-    .alert h2 {
-      margin: 0 0 var(--bh-space-1);
-      font-size: 1rem;
-    }
-
-    .alert p {
-      margin: 0;
-    }
-
-    .toolbar {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: var(--bh-space-4);
-      align-items: center;
-      margin-bottom: var(--bh-space-6);
-    }
-
-    .text-input {
-      width: 100%;
-      padding: 0.9rem 1rem;
-      border: 1px solid var(--bh-colour-neutral-200);
-      border-radius: var(--bh-radius-sm);
-      background: var(--bh-colour-neutral-0);
-      font-size: 1rem;
-    }
-
-    .text-input:focus {
-      outline: 3px solid rgba(36, 60, 255, 0.16);
-      border-color: var(--bh-colour-primary);
-    }
+    .alert h2 { margin: 0 0 var(--bh-space-1); font-size: 1rem; }
+    .alert p { margin: 0; }
 
     .section-block {
       scroll-margin-top: var(--bh-space-6);
-      margin-bottom: var(--bh-space-10);
+      margin-bottom: var(--bh-space-12);
     }
 
     .section-heading {
@@ -256,7 +201,7 @@
       justify-content: space-between;
       align-items: end;
       gap: var(--bh-space-4);
-      margin-bottom: var(--bh-space-4);
+      margin-bottom: var(--bh-space-6);
       padding-bottom: var(--bh-space-3);
       border-bottom: 1px solid var(--bh-colour-neutral-200);
     }
@@ -272,10 +217,19 @@
       margin: var(--bh-space-1) 0 0;
     }
 
+    .subsection-heading {
+      margin: var(--bh-space-10) 0 var(--bh-space-5);
+      color: var(--bh-colour-neutral-800);
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subsection-heading:first-of-type { margin-top: 0; }
+
     .product-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--bh-space-4);
+      gap: var(--bh-space-8);
     }
 
     .card {
@@ -289,9 +243,7 @@
       min-height: 300px;
     }
 
-    .card:hover {
-      border-color: var(--bh-colour-primary);
-    }
+    .card:hover { border-color: var(--bh-colour-primary); }
 
     .card-header {
       display: flex;
@@ -318,10 +270,7 @@
       letter-spacing: -0.02em;
     }
 
-    .card p {
-      margin: 0;
-      color: var(--bh-colour-neutral-600);
-    }
+    .card p { margin: 0; color: var(--bh-colour-neutral-600); }
 
     .tag {
       display: inline-flex;
@@ -358,15 +307,8 @@
       gap: var(--bh-space-2);
     }
 
-    .kv dt {
-      color: var(--bh-colour-neutral-600);
-      font-weight: 800;
-    }
-
-    .kv dd {
-      margin: 0;
-      color: var(--bh-colour-neutral-800);
-    }
+    .kv dt { color: var(--bh-colour-neutral-600); font-weight: 800; }
+    .kv dd { margin: 0; color: var(--bh-colour-neutral-800); }
 
     .actions {
       display: flex;
@@ -386,21 +328,12 @@
       font-weight: 800;
       text-decoration: none;
       cursor: pointer;
+      font: inherit;
     }
 
-    .btn-primary {
-      background: var(--bh-colour-primary);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: var(--bh-colour-primary-dark);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--bh-colour-primary);
-    }
+    .btn-primary { background: var(--bh-colour-primary); color: #fff; }
+    .btn-primary:hover { background: var(--bh-colour-primary-dark); }
+    .btn-secondary { background: transparent; color: var(--bh-colour-primary); }
 
     .footer-note {
       margin-top: var(--bh-space-10);
@@ -410,6 +343,96 @@
       font-size: 0.92rem;
     }
 
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 25, 38, 0.62);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--bh-space-6);
+      z-index: 1000;
+    }
+
+    .modal-backdrop.is-open { display: flex; }
+
+    .modal {
+      width: min(720px, 100%);
+      background: var(--bh-colour-neutral-0);
+      border-radius: var(--bh-radius-lg);
+      border: 1px solid var(--bh-colour-neutral-200);
+      overflow: hidden;
+    }
+
+    .modal-header,
+    .modal-footer {
+      padding: var(--bh-space-5);
+      border-bottom: 1px solid var(--bh-colour-neutral-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--bh-space-4);
+    }
+
+    .modal-footer {
+      border-top: 1px solid var(--bh-colour-neutral-200);
+      border-bottom: 0;
+      justify-content: flex-end;
+    }
+
+    .modal-title {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .modal-body {
+      padding: var(--bh-space-5);
+      display: grid;
+      gap: var(--bh-space-3);
+    }
+
+    .modal-body label {
+      font-weight: 800;
+      color: var(--bh-colour-neutral-800);
+    }
+
+    .notes-input {
+      width: 100%;
+      min-height: 240px;
+      resize: vertical;
+      padding: var(--bh-space-4);
+      border: 1px solid var(--bh-colour-neutral-200);
+      border-radius: var(--bh-radius-sm);
+      font: inherit;
+      line-height: 1.5;
+    }
+
+    .notes-input:focus {
+      outline: 3px solid rgba(36, 60, 255, 0.16);
+      border-color: var(--bh-colour-primary);
+    }
+
+    .close-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--bh-colour-neutral-200);
+      border-radius: var(--bh-radius-sm);
+      background: var(--bh-colour-neutral-0);
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    .saved-indicator {
+      color: var(--bh-colour-success-text);
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-right: auto;
+      display: none;
+    }
+
+    .saved-indicator.is-visible { display: inline; }
+
     @media (max-width: 1100px) {
       .app-shell { grid-template-columns: 1fr; }
       .side-nav {
@@ -418,15 +441,14 @@
         border-right: 0;
         border-bottom: 1px solid var(--bh-colour-neutral-200);
       }
-      .summary-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 700px) {
       .content { padding: var(--bh-space-4); }
-      .toolbar { grid-template-columns: 1fr; }
-      .summary-row, .product-grid { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: 1fr; }
       .section-heading { align-items: start; flex-direction: column; }
+      .modal-backdrop { padding: var(--bh-space-3); }
     }
   </style>
 </head>
@@ -445,7 +467,6 @@
       <ul class="nav-list">
         <li><a href="#core">Core platform</a></li>
         <li><a href="#mobius">Mobius platform</a></li>
-        <li><a href="#rd">RD apps</a></li>
       </ul>
 
       <span class="nav-label">Guidance</span>
@@ -463,13 +484,6 @@
         </p>
       </header>
 
-      <div class="summary-row" aria-label="Product Lab summary">
-        <div class="summary-card"><strong>17</strong><span>items listed</span></div>
-        <div class="summary-card"><strong>3</strong><span>product groups</span></div>
-        <div class="summary-card"><strong>0</strong><span>demo URLs confirmed</span></div>
-        <div class="summary-card"><strong>TBC</strong><span>credential model</span></div>
-      </div>
-
       <div id="access-guidance" class="alert" role="note">
         <div class="alert-icon">i</div>
         <div>
@@ -480,241 +494,20 @@
         </div>
       </div>
 
-      <div class="toolbar">
-        <label>
-          <span class="nav-label" style="margin-top:0;">Search catalogue</span>
-          <input id="search" class="text-input" type="search" placeholder="Search product name, group, owner or description" />
-        </label>
-        <a class="btn btn-secondary" href="#access-guidance">View access guidance</a>
-      </div>
-
       <section id="core" class="section-block">
         <div class="section-heading">
           <div>
             <h2>Core platform</h2>
             <p>Core PAS and supporting products/components.</p>
           </div>
-          <span class="tag">6 items</span>
         </div>
-
         <div class="product-grid">
-
-          <article class="card" data-search="core platform core main open gi policy administration platform for quote, policy, client, risk and back-office insurance workflows. access required product / engineering tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Core</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">C</div>
-            </div>
-
-            <p>Main Open GI policy administration platform for quote, policy, client, risk and back-office insurance workflows.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product / Engineering TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="core platform integration products supporting integration tools such as open word, open attach, open print manager and related desktop/service utilities. access required product / engineering tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Integration Products</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">IP</div>
-            </div>
-
-            <p>Supporting integration tools such as Open Word, Open Attach, Open Print Manager and related desktop/service utilities.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product / Engineering TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="core platform active quote quote-related solution used to support quotation activity and associated insurer/product workflows. access required product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Active Quote</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">AQ</div>
-            </div>
-
-            <p>Quote-related solution used to support quotation activity and associated insurer/product workflows.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="core platform add-on marketplace marketplace-style capability for surfacing and managing add-on products and optional extras. access required product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Add-On Marketplace</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">AO</div>
-            </div>
-
-            <p>Marketplace-style capability for surfacing and managing add-on products and optional extras.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="core platform sme sme-focused platform/component supporting commercial small-to-medium enterprise insurance journeys. access required product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>SME</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">S</div>
-            </div>
-
-            <p>SME-focused platform/component supporting commercial small-to-medium enterprise insurance journeys.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="core platform document portal portal for accessing, sharing or managing generated customer/policy documentation. access required product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Document Portal</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">DP</div>
-            </div>
-
-            <p>Portal for accessing, sharing or managing generated customer/policy documentation.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
+          <article class="card" data-product-id="core" data-product-name="Core"><div class="card-header"><div><span class="tag">Access required</span><h3>Core</h3></div><div class="icon-block">C</div></div><p>Main Open GI policy administration platform for quote, policy, client, risk and back-office insurance workflows.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product / Engineering TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="integration-products" data-product-name="Integration Products"><div class="card-header"><div><span class="tag">Access required</span><h3>Integration Products</h3></div><div class="icon-block">IP</div></div><p>Supporting integration tools such as Open Word, Open Attach, Open Print Manager and related desktop/service utilities.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product / Engineering TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="active-quote" data-product-name="Active Quote"><div class="card-header"><div><span class="tag">Access required</span><h3>Active Quote</h3></div><div class="icon-block">AQ</div></div><p>Quote-related solution used to support quotation activity and associated insurer/product workflows.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="add-on-marketplace" data-product-name="Add-On Marketplace"><div class="card-header"><div><span class="tag">Access required</span><h3>Add-On Marketplace</h3></div><div class="icon-block">AO</div></div><p>Marketplace-style capability for surfacing and managing add-on products and optional extras.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="sme" data-product-name="SME"><div class="card-header"><div><span class="tag">Access required</span><h3>SME</h3></div><div class="icon-block">S</div></div><p>SME-focused platform/component supporting commercial small-to-medium enterprise insurance journeys.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="document-portal" data-product-name="Document Portal"><div class="card-header"><div><span class="tag">Access required</span><h3>Document Portal</h3></div><div class="icon-block">DP</div></div><p>Portal for accessing, sharing or managing generated customer/policy documentation.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
         </div>
       </section>
 
@@ -722,423 +515,27 @@
         <div class="section-heading">
           <div>
             <h2>Mobius platform</h2>
-            <p>Mobius UI and configuration/pricing tooling.</p>
+            <p>Mobius UI, configuration/pricing tooling and RD applications that sit under the Mobius umbrella.</p>
           </div>
-          <span class="tag">3 items</span>
         </div>
 
+        <h3 class="subsection-heading">Mobius applications</h3>
         <div class="product-grid">
-
-          <article class="card" data-search="mobius platform mobius ui modern mobius user interface for policy and operational workflows. access required mobius product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Mobius UI</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">MU</div>
-            </div>
-
-            <p>Modern Mobius user interface for policy and operational workflows.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Mobius Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="mobius platform configuration hub central configuration area for managing product/platform settings and configuration assets. access required product / engineering tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Configuration Hub</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">CH</div>
-            </div>
-
-            <p>Central configuration area for managing product/platform settings and configuration assets.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product / Engineering TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="mobius platform dynamic pricing tool tooling to support dynamic pricing configuration, testing and pricing-related changes. access required product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Dynamic Pricing Tool</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">DP</div>
-            </div>
-
-            <p>Tooling to support dynamic pricing configuration, testing and pricing-related changes.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-        </div>
-      </section>
-
-      <section id="rd" class="section-block">
-        <div class="section-heading">
-          <div>
-            <h2>RD apps</h2>
-            <p>RD applications, legacy tools and supporting utilities.</p>
-          </div>
-          <span class="tag">8 items</span>
+          <article class="card" data-product-id="mobius-ui" data-product-name="Mobius UI"><div class="card-header"><div><span class="tag">Access required</span><h3>Mobius UI</h3></div><div class="icon-block">MU</div></div><p>Modern Mobius user interface for policy and operational workflows.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Mobius Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="configuration-hub" data-product-name="Configuration Hub"><div class="card-header"><div><span class="tag">Access required</span><h3>Configuration Hub</h3></div><div class="icon-block">CH</div></div><p>Central configuration area for managing product/platform settings and configuration assets.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product / Engineering TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="dynamic-pricing-tool" data-product-name="Dynamic Pricing Tool"><div class="card-header"><div><span class="tag">Access required</span><h3>Dynamic Pricing Tool</h3></div><div class="icon-block">DP</div></div><p>Tooling to support dynamic pricing configuration, testing and pricing-related changes.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
         </div>
 
+        <h3 class="subsection-heading">RD apps</h3>
         <div class="product-grid">
-
-          <article class="card" data-search="rd apps accounts suite rd application suite supporting accounts-related workflows and operational finance activity. access required rd / product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Accounts Suite</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">AS</div>
-            </div>
-
-            <p>RD application suite supporting accounts-related workflows and operational finance activity.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>RD / Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="rd apps mcas legacy/older rd application. product confirmation needed as this may be planned for deprecation. confirm status product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag warning">Confirm status</span>
-                <h3>MCAS</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">M</div>
-            </div>
-
-            <p>Legacy/older RD application. Product confirmation needed as this may be planned for deprecation.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="rd apps obfuscation manager tool for managing data obfuscation or masking processes. access required rd / engineering tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Obfuscation Manager</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">OM</div>
-            </div>
-
-            <p>Tool for managing data obfuscation or masking processes.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>RD / Engineering TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="rd apps relationship manager application for managing relationships or links between entities/data records. access required rd / product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Relationship Manager</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">RM</div>
-            </div>
-
-            <p>Application for managing relationships or links between entities/data records.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>RD / Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="rd apps report scheduler tool for scheduling and managing reports. access required rd / product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Report Scheduler</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">RS</div>
-            </div>
-
-            <p>Tool for scheduling and managing reports.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>RD / Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="rd apps screen designer legacy/design tool expected to be replaced by lob tool when available. confirm status product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag warning">Confirm status</span>
-                <h3>Screen Designer</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">SD</div>
-            </div>
-
-            <p>Legacy/design tool expected to be replaced by LOB Tool when available.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="rd apps tools suite collection of rd tools; some capability may now have moved into configuration hub. confirm status product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag warning">Confirm status</span>
-                <h3>Tools Suite</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">TS</div>
-            </div>
-
-            <p>Collection of RD tools; some capability may now have moved into Configuration Hub.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
-          <article class="card" data-search="rd apps document manager - word add in word add-in for document management or document production workflows. access required rd / product tbc">
-            <div class="card-header">
-              <div>
-                <span class="tag ">Access required</span>
-                <h3>Document Manager - Word Add In</h3>
-              </div>
-              <div class="icon-block" aria-hidden="true">DM</div>
-            </div>
-
-            <p>Word add-in for document management or document production workflows.</p>
-
-            <dl class="emphasis-tile">
-              <div class="kv">
-                <dt>Demo URL</dt>
-                <dd><a href="#">Add link</a></dd>
-              </div>
-              <div class="kv">
-                <dt>Username</dt>
-                <dd>demo.user</dd>
-              </div>
-              <div class="kv">
-                <dt>Password</dt>
-                <dd>Confirm with owner</dd>
-              </div>
-              <div class="kv">
-                <dt>Owner</dt>
-                <dd>RD / Product TBC</dd>
-              </div>
-            </dl>
-
-            <div class="actions">
-              <a class="btn btn-primary" href="#">Open demo</a>
-              <a class="btn btn-secondary" href="#">Add notes</a>
-            </div>
-          </article>
-
+          <article class="card" data-product-id="accounts-suite" data-product-name="Accounts Suite"><div class="card-header"><div><span class="tag">Access required</span><h3>Accounts Suite</h3></div><div class="icon-block">AS</div></div><p>RD application suite supporting accounts-related workflows and operational finance activity.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="mcas" data-product-name="MCAS"><div class="card-header"><div><span class="tag warning">Confirm status</span><h3>MCAS</h3></div><div class="icon-block">M</div></div><p>Legacy/older RD application. Product confirmation needed as this may be planned for deprecation.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="obfuscation-manager" data-product-name="Obfuscation Manager"><div class="card-header"><div><span class="tag">Access required</span><h3>Obfuscation Manager</h3></div><div class="icon-block">OM</div></div><p>Tool for managing data obfuscation or masking processes.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Engineering TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="relationship-manager" data-product-name="Relationship Manager"><div class="card-header"><div><span class="tag">Access required</span><h3>Relationship Manager</h3></div><div class="icon-block">RM</div></div><p>Application for managing relationships or links between entities/data records.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="report-scheduler" data-product-name="Report Scheduler"><div class="card-header"><div><span class="tag">Access required</span><h3>Report Scheduler</h3></div><div class="icon-block">RS</div></div><p>Tool for scheduling and managing reports.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="screen-designer" data-product-name="Screen Designer"><div class="card-header"><div><span class="tag warning">Confirm status</span><h3>Screen Designer</h3></div><div class="icon-block">SD</div></div><p>Legacy/design tool expected to be replaced by LOB Tool when available.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="tools-suite" data-product-name="Tools Suite"><div class="card-header"><div><span class="tag warning">Confirm status</span><h3>Tools Suite</h3></div><div class="icon-block">TS</div></div><p>Collection of RD tools; some capability may now have moved into Configuration Hub.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
+          <article class="card" data-product-id="document-manager-word-add-in" data-product-name="Document Manager - Word Add In"><div class="card-header"><div><span class="tag">Access required</span><h3>Document Manager - Word Add In</h3></div><div class="icon-block">DM</div></div><p>Word add-in for document management or document production workflows.</p><dl class="emphasis-tile"><div class="kv"><dt>Demo URL</dt><dd><a href="#">Add link</a></dd></div><div class="kv"><dt>Username</dt><dd>demo.user</dd></div><div class="kv"><dt>Password</dt><dd>Confirm with owner</dd></div><div class="kv"><dt>Owner</dt><dd>RD / Product TBC</dd></div></dl><div class="actions"><a class="btn btn-primary" href="#">Open demo</a><button class="btn btn-secondary notes-button" type="button">Add notes</button></div></article>
         </div>
       </section>
 
@@ -1148,25 +545,80 @@
     </main>
   </div>
 
+  <div class="modal-backdrop" id="notesModal" role="dialog" aria-modal="true" aria-labelledby="notesModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="notesModalTitle">Add notes</h2>
+        <button class="close-button" type="button" id="closeModal" aria-label="Close notes modal">×</button>
+      </div>
+      <div class="modal-body">
+        <label for="notesText">Notes</label>
+        <textarea id="notesText" class="notes-input" placeholder="Add useful notes, access guidance, test data, limitations, owner comments, etc."></textarea>
+      </div>
+      <div class="modal-footer">
+        <span id="savedIndicator" class="saved-indicator">Saved</span>
+        <button class="btn btn-secondary" type="button" id="cancelNotes">Cancel</button>
+        <button class="btn btn-primary" type="button" id="saveNotes">Save notes</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const search = document.getElementById('search');
-    const cards = Array.from(document.querySelectorAll('.card'));
+    const modal = document.getElementById('notesModal');
+    const modalTitle = document.getElementById('notesModalTitle');
+    const notesText = document.getElementById('notesText');
+    const closeModalButton = document.getElementById('closeModal');
+    const cancelNotesButton = document.getElementById('cancelNotes');
+    const saveNotesButton = document.getElementById('saveNotes');
+    const savedIndicator = document.getElementById('savedIndicator');
+    let activeProductId = null;
+    let lastFocusedElement = null;
 
-    function filterCards() {
-      const query = search.value.trim().toLowerCase();
-
-      cards.forEach(card => {
-        const match = card.dataset.search.includes(query);
-        card.hidden = !match;
-      });
-
-      document.querySelectorAll('.section-block').forEach(section => {
-        const visible = Array.from(section.querySelectorAll('.card')).some(card => !card.hidden);
-        section.hidden = !visible;
-      });
+    function storageKey(productId) {
+      return `ogi-product-lab-notes-${productId}`;
     }
 
-    search.addEventListener('input', filterCards);
+    function openNotesModal(card, trigger) {
+      activeProductId = card.dataset.productId;
+      lastFocusedElement = trigger;
+      modalTitle.textContent = `Notes for ${card.dataset.productName}`;
+      notesText.value = localStorage.getItem(storageKey(activeProductId)) || '';
+      savedIndicator.classList.remove('is-visible');
+      modal.classList.add('is-open');
+      document.body.classList.add('modal-open');
+      notesText.focus();
+    }
+
+    function closeNotesModal() {
+      modal.classList.remove('is-open');
+      document.body.classList.remove('modal-open');
+      activeProductId = null;
+      if (lastFocusedElement) lastFocusedElement.focus();
+    }
+
+    function saveNotes() {
+      if (!activeProductId) return;
+      localStorage.setItem(storageKey(activeProductId), notesText.value);
+      savedIndicator.classList.add('is-visible');
+      window.setTimeout(() => savedIndicator.classList.remove('is-visible'), 1600);
+    }
+
+    document.querySelectorAll('.notes-button').forEach(button => {
+      button.addEventListener('click', () => openNotesModal(button.closest('.card'), button));
+    });
+
+    closeModalButton.addEventListener('click', closeNotesModal);
+    cancelNotesButton.addEventListener('click', closeNotesModal);
+    saveNotesButton.addEventListener('click', saveNotes);
+
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeNotesModal();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeNotesModal();
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter' && modal.classList.contains('is-open')) saveNotes();
+    });
   </script>
 </body>
 </html>
