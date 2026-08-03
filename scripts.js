@@ -64,6 +64,11 @@ const productResources = {
   ],
   'ratings': [
     {
+      title: 'Ratings Reference',
+      description: 'Guides and supporting information for Ratings and related applications.',
+      url: 'https://supportcentre.opengi.co.uk/mobiusguides/Ratings_IHPPlus/RatingsFull/index.htm'
+    },
+    {
       title: 'Ratings Quick Reference',
       description: 'Guides and supporting information for Ratings and related applications.',
       url: 'https://supportcentre.opengi.co.uk/mobiusguides/Ratings_IHPPlus/RatingsQRG/'
