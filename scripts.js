@@ -59,6 +59,13 @@ const productResources = {
       description: 'Guides and supporting information for Mobius and related RD applications.',
       url: 'https://supportcentre.opengi.co.uk/mobiusguides/'
     }
+  ],
+  'ratings': [
+    {
+      title: 'Ratings Quickl Reference',
+      description: 'Guides and supporting information for Ratings and related applications.',
+      url: 'https://supportcentre.opengi.co.uk/mobiusguides/Ratings_IHPPlus/RatingsQRG/'
+    }
   ]
 };
 
