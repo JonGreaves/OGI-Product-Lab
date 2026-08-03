@@ -47,7 +47,10 @@ const productResources = {
     {
       title: 'Mobius Support Centre',
       description: 'Browse available Mobius guidance and related product documentation.',
-      url: 'https://supportcentre.opengi.co.uk/mobiusguides/'
+      url: 'https://supportcentre.opengi.co.uk/mobiusguides/',
+      title: 'Dynamic Pricing Tool Fact Sheet',
+      description: 'Browse Dynamic Pricing product documentation.',
+      url: 'https://supportcentre.opengi.co.uk/index.php/component/remository/Fact-Sheets/Dynamic-Pricing-Tool-Fact-Sheet'
     }
   ],
   'rd-apps': [
